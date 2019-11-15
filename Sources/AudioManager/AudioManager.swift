@@ -3,7 +3,7 @@ import AVFoundation
 public class AudioManager : NSObject, AVAudioPlayerDelegate {
     
     // MARK: - Singleton
-    static let shared = AudioManager()
+    public static let shared = AudioManager()
     
     // MARK: - Init
     private override init() {
@@ -29,7 +29,7 @@ public class AudioManager : NSObject, AVAudioPlayerDelegate {
     ///     - audioFileType: Type of file. Default type is mp3
     ///
     /// - Precondition: If audio is already playing it adjusts the volume.
-    func playAudio(audioFileName: String, volume: Float = 0.5, audioFileType: String = "mp3") {
+    public func playAudio(audioFileName: String, volume: Float = 0.5, audioFileType: String = "mp3") {
         
         guard let bundle = Bundle.main.path(forResource: audioFileName, ofType: audioFileType) else { return }
         let audioFileNameURL = URL(fileURLWithPath: bundle)
@@ -61,7 +61,7 @@ public class AudioManager : NSObject, AVAudioPlayerDelegate {
     /// - Parameters:
     ///     - audioFileName: The name of the audio resource file.
     ///     - audioFileType: Type of file. Default type is mp3
-    func playOrStopAudio(audioFileName: String, audioFileType: String = "mp3") {
+    public func playOrStopAudio(audioFileName: String, audioFileType: String = "mp3") {
         
         guard let bundle = Bundle.main.path(forResource: audioFileName, ofType: audioFileType) else { return }
         let audioFileNameURL = URL(fileURLWithPath: bundle)
@@ -91,7 +91,7 @@ public class AudioManager : NSObject, AVAudioPlayerDelegate {
     /// - Parameters:
     ///     - audioFileName: The name of the audio resource file.
     ///     - audioFileType: Type of file. Default type is mp3
-    func stopAudio(audioFileName: String, audioFileType: String = "mp3") {
+    public func stopAudio(audioFileName: String, audioFileType: String = "mp3") {
         
         guard let bundle = Bundle.main.path(forResource: audioFileName, ofType: audioFileType) else { return }
         let audioFileNameURL = URL(fileURLWithPath: bundle)
@@ -110,7 +110,7 @@ public class AudioManager : NSObject, AVAudioPlayerDelegate {
     ///     - audioFileName: The name of the audio resource file.
     ///     - volume: Volume of the audio, ranging from 0.0 through 1.0 on a linear scale.
     ///     - audioFileType: Type of file. Default type is mp3
-    func changeVolume(audioFileName: String, volume: Float, audioFileType: String = "mp3") {
+    public func changeVolume(audioFileName: String, volume: Float, audioFileType: String = "mp3") {
         guard let bundle = Bundle.main.path(forResource: audioFileName, ofType: audioFileType) else { return }
         let audioFileNameURL = URL(fileURLWithPath: bundle)
         
@@ -123,7 +123,7 @@ public class AudioManager : NSObject, AVAudioPlayerDelegate {
     
     /// Stops all audios of AudioManager
     ///
-    func stopAllAudios() {
+    public func stopAllAudios() {
         for player in players {
             player.value.stop()
         }
@@ -133,7 +133,7 @@ public class AudioManager : NSObject, AVAudioPlayerDelegate {
     ///
     /// - Parameters:
     ///     - audioFileNames: Array of the names of the audio resource file.
-    func playAudios(audioFileNames: [String]) {
+    public func playAudios(audioFileNames: [String]) {
         for audioFileName in audioFileNames {
             self.playAudio(audioFileName: audioFileName)
         }
@@ -143,7 +143,7 @@ public class AudioManager : NSObject, AVAudioPlayerDelegate {
     ///
     /// - Parameters:
     ///     - audioFileNames: Variadic parameter of the names of the audio resource file.
-    func playAudios(audioFileNames: String...) {
+    public func playAudios(audioFileNames: String...) {
         for audioFileName in audioFileNames {
             self.playAudio(audioFileName: audioFileName)
         }
@@ -154,7 +154,7 @@ public class AudioManager : NSObject, AVAudioPlayerDelegate {
     /// - Parameters:
     ///     - audioFileNames: Array of the names of the audio resource file.
     ///     - withDelay: Delay of audio in seconds
-    func playAudios(audioFileNames: [String], withDelay: Double) {
+    public func playAudios(audioFileNames: [String], withDelay: Double) {
         for (index, audioFileName) in audioFileNames.enumerated() {
             let delay = withDelay * Double(index)
             let _ = Timer.scheduledTimer(timeInterval: delay, target: self, selector: #selector(playAudioNotification(_:)), userInfo: ["fileName": audioFileName], repeats: false)
