@@ -12,7 +12,7 @@ To include AudioManager into a Swift Package Manger package add the `dependencie
 
 ```
 dependencies: [
-    .package(url: "https://github.com/robinlieb/AudioManager.git", from: "0.0.1")
+    .package(url: "https://github.com/robinlieb/AudioManager.git", from: "0.0.2")
 ]
 ```
 
@@ -21,7 +21,7 @@ dependencies: [
 To include AudioManager into your CocoaPods project add it into your `Podfile`:
 
 ```
-pod 'AudioManager', '~> 0.0.1'
+pod 'AudioManager', '~> 0.0.2'
 ```
 
 ## Usage

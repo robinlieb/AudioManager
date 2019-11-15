@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "AudioManager"
-  spec.version      = "0.0.1"
+  spec.version      = "0.0.2"
   spec.summary      = "Simple wrapper for AVAudioSession."
   spec.homepage     = "https://github.com/robinlieb/AudioManager"
   spec.license      = "MIT"
